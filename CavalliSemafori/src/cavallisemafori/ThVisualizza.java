@@ -14,9 +14,9 @@ import java.util.logging.Logger;
  * @author Chris
  */
 public class ThVisualizza extends Thread{
-    private visualizza dt;
+    private dataStorage dt;
     
-    public ThVisualizza(visualizza dt)
+    public ThVisualizza(dataStorage dt)
     {
         this.dt = dt;
     }

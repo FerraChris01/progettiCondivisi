@@ -9,14 +9,16 @@ package cavallisemafori;
  *
  * @author Chris
  */
-public class visualizza {
+public class dataStorage {
     private String var;
     private boolean finito;
-    public visualizza()
+    private String vincitore;
+    
+    public dataStorage()
     {      
         finito = false;
     }
-    public void setClop(String verso)
+    synchronized public void setClop(String verso)
     {
         var = verso;
     }
@@ -31,5 +33,13 @@ public class visualizza {
     public boolean getFinito()
     {
         return finito;
+    }
+    public void setVincitore(String verso)
+    {
+        vincitore = verso;
+    }
+    public String getVincitore()
+    {
+        return vincitore;
     }
 }

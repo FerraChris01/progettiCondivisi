@@ -5,6 +5,7 @@
  */
 package cavallisemafori;
 
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,14 +20,18 @@ public class CavalliSemafori {
      */
     public static void main(String[] args) {
         
-            visualizza dt = new visualizza();
-            Semaforo sem1 = new Semaforo(1);
-            ThCavallo clop1 = new ThCavallo("clop1", dt, sem1);
-            ThCavallo clop2 = new ThCavallo("clop2", dt, sem1);
-            ThCavallo clop3 = new ThCavallo("clop3", dt, sem1);
-            ThCavallo clop4 = new ThCavallo("clop4", dt, sem1);
-            ThCavallo clop5 = new ThCavallo("clop5", dt, sem1);
+            String vincitore;
+            dataStorage dt = new dataStorage();
+            ThCavallo clop1 = new ThCavallo("clop1", dt);
+            ThCavallo clop2 = new ThCavallo("clop2", dt);
+            ThCavallo clop3 = new ThCavallo("clop3", dt);
+            ThCavallo clop4 = new ThCavallo("clop4", dt);
+            ThCavallo clop5 = new ThCavallo("clop5", dt);
             ThVisualizza thVis = new ThVisualizza(dt);
+            
+            Scanner s = new Scanner(System.in);
+            System.out.println("Su quale cavallo scommetti?");
+            vincitore = s.nextLine();
             
             clop1.start();
             clop2.start();
@@ -45,14 +50,16 @@ public class CavalliSemafori {
             Logger.getLogger(CavalliSemafori.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        dt.setFinito();
-        
         clop1.interrupt();
         clop2.interrupt();
         clop3.interrupt();
         clop4.interrupt();
         clop5.interrupt();
         thVis.interrupt();
+        
+        String temp = dt.getVincitore();
+        if (temp == vincitore) System.out.println("Hai vinto! Vince il cavallo " + temp);
+        else System.out.println("Hai perso! Vince il cavallo " + temp);        
     }
     
 }
