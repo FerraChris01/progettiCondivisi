@@ -56,14 +56,29 @@ public class dataStorage {
     {
         return finito;
     }
-    synchronized void incPuntiLetti()
+    synchronized public void incPuntiLetti()
     {
         numPuntiLetti++;
     }
-    synchronized void incSpaziLetti()
+    synchronized public void incSpaziLetti()
     {
         numSpaziLetti++;
     }
-    
+    public int getNumPuntiLetti()
+    {
+        return numPuntiLetti;
+    }
+    public int getSpaziLetti()
+    {
+        return numSpaziLetti;
+    }    
+    public int getPuntiInseriti()
+    {
+        return numPuntiInseriti;
+    }
+    public int getSpaziInseriti()
+    {
+        return numSpaziInseriti;
+    }
     
 }

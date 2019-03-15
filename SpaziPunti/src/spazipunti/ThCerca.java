@@ -18,13 +18,17 @@ public class ThCerca extends Thread{
     private dataStorage data;
     private Semaphore prevSem;
     private Semaphore nextSem;
+    private Semaphore prevVis;
+    private Semaphore nextVis;
     
-    public ThCerca(boolean tipo, dataStorage data, Semaphore prevSem, Semaphore nextSem)
+    public ThCerca(boolean tipo, dataStorage data, Semaphore prevSem, Semaphore nextSem, Semaphore prevVis, Semaphore nextVis)
     {
         this.tipo = tipo;
         this.data = data;
         this.prevSem = prevSem;
         this.nextSem = nextSem;
+        this.prevVis = prevVis;
+        this.nextVis = nextVis;
     }
     @Override 
     public void run()
@@ -41,13 +45,29 @@ public class ThCerca extends Thread{
             {
                 if (tipo) 
                 {
-                    if (c == '.') 
-                        data.incPuntiLetti();
+                    try {
+                        if (c == '.') 
+                        {
+                            prevVis.acquire();
+                            data.incPuntiLetti();
+                            nextVis.release();       
+                        }
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(ThCerca.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
                 else    
                 {
-                    if (c == ' ') 
-                        data.incSpaziLetti();
+                    try {
+                        if (c == ' ')
+                        {
+                            prevVis.acquire();
+                            data.incSpaziLetti();
+                            nextVis.release();
+                        }
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(ThCerca.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
             nextSem.release();            

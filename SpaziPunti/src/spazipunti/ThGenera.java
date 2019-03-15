@@ -35,7 +35,7 @@ public class ThGenera extends Thread{
         {
             while (data.getNumEl() < 10 && numChar > 0)
             {
-                int k = rand.nextInt(28) + 65;
+                int k = rand.nextInt(29) + 65;
                 char el = '&';
                 if (k == 91) el = '.';
                 else if (k == 92) el = ' ';
