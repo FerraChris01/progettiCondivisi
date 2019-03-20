@@ -47,12 +47,13 @@ public class ThCerca extends Thread{
                 {
                         if (c == '.') 
                         {
+                            
                             try {
                                 prevVis.acquire();
                             } catch (InterruptedException ex) {
                                 Logger.getLogger(ThCerca.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                            data.incPuntiLetti();                            
+                            data.incPuntiLetti();                                                        
                             nextVis.release(); 
 
                         }
@@ -72,8 +73,11 @@ public class ThCerca extends Thread{
 
                         }
                 }
-            }
-            nextSem.release();            
+            }           
+            
+            if (isInterrupted()) return;
+            nextSem.release();
         }
+        nextVis.release();
     }
 }

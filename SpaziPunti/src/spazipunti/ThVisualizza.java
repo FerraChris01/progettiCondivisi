@@ -27,9 +27,12 @@ public class ThVisualizza extends Thread{
     public void run()
     {
         while (!data.getFinito())
-        {
+        {   
             try {
-                prevSem.acquire();
+                    prevSem.acquire();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(ThVisualizza.class.getName()).log(Level.SEVERE, null, ex);
+            }
                 char[] temp = data.getbuffer();
                 for (char c : temp)
                     System.out.println(c);
@@ -37,9 +40,8 @@ public class ThVisualizza extends Thread{
                 System.out.println("Numero punti letti: " + data.getNumPuntiLetti());
                 System.out.println("Numero spazi letti: " + data.getSpaziLetti());
                 nextSem.release();
-            } catch (InterruptedException ex) {
-                Logger.getLogger(ThVisualizza.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                
         }
+        if (isInterrupted()) return;
     }
 }

@@ -39,16 +39,23 @@ public class SpaziPunti {
         thc1.start();
         thc2.start();
         thv.start();
-         
+        
+        while (!data.getFinito());
+        
+        thg.interrupt();
+        thc1.interrupt();
+        thc2.interrupt();
+        thv.interrupt();  
+        
         try {
-            thg.join();
-            thc1.join();
-            thc2.join();
             thv.join();
         } catch (InterruptedException ex) {
             Logger.getLogger(SpaziPunti.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }         
         
+        
+        
+        System.out.println("||||||||||||||||||||||||||||||||||||||||||||");
         System.out.println("Numero punti inseriti: " + data.getPuntiInseriti());
         System.out.println("Numero punti letti: " + data.getNumPuntiLetti());
         System.out.println("--------------------------------------------");

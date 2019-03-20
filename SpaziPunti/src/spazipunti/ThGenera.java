@@ -31,8 +31,9 @@ public class ThGenera extends Thread{
     public void run()
     {
         Random rand = new Random();   //28 + 65;
-        while (numChar > 0)
-        {           
+        while (numChar > 0 && !data.getFinito())
+        {  
+            data.resetNumEl();   
             while (data.getNumEl() < 10 && numChar > 0)
             {
                 int k = rand.nextInt(29) + 65;
@@ -43,20 +44,19 @@ public class ThGenera extends Thread{
                 data.pushAndInc(el);
                 numChar--;                
             }
+
             nextSem.release();
-            nextSem.release();
-            if (numChar > 0)
-            {
+            nextSem.release();              
                 try {
                     prevSem.acquire();
                     prevSem.acquire();
                 } catch (InterruptedException ex) {
                     Logger.getLogger(ThGenera.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                data.resetNumEl();          
-            }
+                }    
+                          
         }
         data.setFinito();
+        
     }
     
 }
