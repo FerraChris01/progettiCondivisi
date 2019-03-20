@@ -32,7 +32,7 @@ public class ThGenera extends Thread{
     {
         Random rand = new Random();   //28 + 65;
         while (numChar > 0)
-        {
+        {           
             while (data.getNumEl() < 10 && numChar > 0)
             {
                 int k = rand.nextInt(29) + 65;

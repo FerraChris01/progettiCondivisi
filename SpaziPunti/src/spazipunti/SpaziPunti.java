@@ -25,10 +25,10 @@ public class SpaziPunti {
         System.out.println("Inserire il numero di caratteri da generare: ");        
         int numChar = sc.nextInt();
         
-        Semaphore generaCerca = new Semaphore(1);
+        Semaphore generaCerca = new Semaphore(0);
         Semaphore cercaGenera = new Semaphore(0);
-        Semaphore visCerca = new Semaphore(0);
-        Semaphore cercaVis = new Semaphore(1);
+        Semaphore visCerca = new Semaphore(1);
+        Semaphore cercaVis = new Semaphore(0);
         dataStorage data = new dataStorage();
         ThGenera thg = new ThGenera(data, numChar, generaCerca, cercaGenera);
         ThCerca thc1 = new ThCerca(true, data, cercaGenera, generaCerca, visCerca, cercaVis);

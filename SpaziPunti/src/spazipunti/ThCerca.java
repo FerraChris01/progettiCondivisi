@@ -45,29 +45,32 @@ public class ThCerca extends Thread{
             {
                 if (tipo) 
                 {
-                    try {
                         if (c == '.') 
                         {
-                            prevVis.acquire();
-                            data.incPuntiLetti();
-                            nextVis.release();       
+                            try {
+                                prevVis.acquire();
+                            } catch (InterruptedException ex) {
+                                Logger.getLogger(ThCerca.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            data.incPuntiLetti();                            
+                            nextVis.release(); 
+
                         }
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(ThCerca.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+
                 }
                 else    
                 {
-                    try {
                         if (c == ' ')
-                        {
-                            prevVis.acquire();
+                        {   
+                            try {
+                                prevVis.acquire();
+                            } catch (InterruptedException ex) {
+                                Logger.getLogger(ThCerca.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                             data.incSpaziLetti();
                             nextVis.release();
+
                         }
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(ThCerca.class.getName()).log(Level.SEVERE, null, ex);
-                    }
                 }
             }
             nextSem.release();            
