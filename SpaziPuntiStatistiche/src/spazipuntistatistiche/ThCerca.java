@@ -46,7 +46,6 @@ public class ThCerca extends Thread{
                     if (c == ' ') data.incSpaziLetti();
             }
             cercaVisualizza.release();
-            cercaVisualizza.release();
         }
     }
 }
