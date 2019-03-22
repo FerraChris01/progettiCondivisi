@@ -34,7 +34,12 @@ public class SpaziPuntiStatistiche {
         ThGenera thg = new ThGenera(data, numChar, visualizzaGenera, generaCerca);
         ThCerca thc1 = new ThCerca(data, true, generaCerca, cercaVisualizza);
         ThCerca thc2 = new ThCerca(data, false, generaCerca, cercaVisualizza);
-        ThVisualizza thv = new ThVisualizza(data, cercaVisualizza, visualizzaGenera);        
+        ThVisualizza thv = new ThVisualizza(data, cercaVisualizza, visualizzaGenera); 
+        
+        thg.start();
+        thc1.start();
+        thc2.start();
+        thv.start();
 
         try {
             thg.join();

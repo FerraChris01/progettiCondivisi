@@ -47,6 +47,7 @@ public class ThGenera extends Thread{
                 else if (temp == 92) el = ' ';
                 else el = (char)temp;
                 data.pushEl(el);
+                numChar--;
             }
             generaCerca.release();          
             generaCerca.release(); 
