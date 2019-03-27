@@ -27,32 +27,32 @@ public class dataStorage {
         numElEstrazioni = 0;
         finito = false;
     }
-    public int[] getVectNumEstratti()
+    public synchronized int[] getVectNumEstratti()
     {
         return numEstratti;
     }
-    public Estrazione getElDiNumEl()
+    public synchronized Estrazione getElDiNumEl()
     {
         return estrazioni[numElEstrazioni];
     }
-    public boolean estrazioneFinita()
+    public synchronized boolean estrazioneFinita()
     {
         if (numEstrazioni - 1 == numElEstrazioni) return true;
         else return false;
     }
-    public void incNumElEstrazioni()
+    public synchronized void incNumElEstrazioni()
     {
         numElEstrazioni++;
     }
-    public boolean getFinito()
+    public synchronized boolean getFinito()
     {
         return finito;
     }
-    public void setFinito()
+    public synchronized void setFinito()
     {
         finito = true;
     }
-    public Estrazione[] getVectEstrazioni()
+    public synchronized Estrazione[] getVectEstrazioni()
     {
         return estrazioni;
     }
