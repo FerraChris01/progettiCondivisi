@@ -54,12 +54,19 @@ public class dataStorage {
     }
     synchronized public void visualizza()
     {   
+        for (char c : buffer)
+        {
+            System.out.println(c);
+        }
         System.out.println("Numero punti inseriti: " + numPuntiInseriti);
         System.out.println("Numero punti letti: " + numPuntiLetti + "\n");
         System.out.println("Numero spazi inseriti: " + numSpaziInseriti);
         System.out.println("Numero spazi letti: " + numSpaziLetti);        
         System.out.println("-------------------------------");
     }
-    
+    synchronized public void setFinito()
+    {
+        finito = true;
+    }
     
 }

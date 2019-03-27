@@ -30,22 +30,35 @@ public class ThCerca extends Thread{
     @Override 
     public void run()
     {
-        while (!data.getFinito())
+        do 
         {
             try {
                 generaCerca.acquire();
+                System.out.println("risvegliato");
             } catch (InterruptedException ex) {
                 Logger.getLogger(ThCerca.class.getName()).log(Level.SEVERE, null, ex);
             }
             char[] temp = data.getBuffer();
-            for (char c : temp)
+            for (int i = 0; i < temp.length; i++)
             {
                 if (tipo)
-                    if (c == '.') data.incPuntiLetti();
+                {
+                    if (temp[i] == '.') 
+                    {
+                        data.incPuntiLetti();
+                        System.out.println("letto punto " + tipo);
+                    }                    
+                }
                 else
-                    if (c == ' ') data.incSpaziLetti();
+                {
+                    if (temp[i] == ' ') 
+                    {
+                        data.incSpaziLetti();
+                        System.out.println("letto spazio " + tipo);
+                    }                    
+                }                    
             }
             cercaVisualizza.release();
-        }
+        } while (!data.getFinito());
     }
 }

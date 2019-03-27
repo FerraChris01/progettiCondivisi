@@ -52,5 +52,6 @@ public class ThGenera extends Thread{
             generaCerca.release();          
             generaCerca.release(); 
         }
+        data.setFinito();
     }
 }
